@@ -2,10 +2,20 @@ from django import forms
 from django.contrib import admin
 from django.contrib.contenttypes.generic import GenericTabularInline
 from django.utils.translation import ugettext_lazy as _
+from django.utils.safestring import mark_safe
 
 from generic_images.models import AttachedImage
 
 admin.site.register(AttachedImage)
+
+class ExtendedClearableFileInput(forms.widgets.ClearableFileInput):
+    """
+    Add a 50x50 preview of the image.
+    """
+    def render(self, name, value, attrs=None):
+        original = super(ExtendedClearableFileInput, self).render(name, value, attrs)
+
+        return mark_safe(original + ('<img src="%s" width="50px" height="50px"/>' % value.url if hasattr(value, "url") else ""))
 
 def attachedimage_form_factory(lang='en', debug=False):
     ''' Returns ModelForm class to be used in admin.
@@ -14,6 +24,7 @@ def attachedimage_form_factory(lang='en', debug=False):
     '''
     yui = '' if debug else '.yui'
     class _AttachedImageAdminForm(forms.ModelForm):
+        image = forms.ImageField(widget=ExtendedClearableFileInput)
 
         caption = forms.CharField(label=_('Caption'), required=False)
 
