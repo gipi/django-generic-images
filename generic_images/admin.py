@@ -19,9 +19,9 @@ def attachedimage_form_factory(lang='en', debug=False):
 
         class Media:
             js = [
-                  'generic_images/js/mootools-1.2.4-core-yc.js',
-                  'generic_images/js/GearsUploader.%s%s.js' % (lang, yui,),
-                  'generic_images/js/AttachedImageInline.js',
+                  'js/mootools-1.2.4-core-yc.js',
+                  'js/GearsUploader.%s%s.js' % (lang, yui,),
+                  'js/AttachedImageInline.js',
             ]
 
         class Meta:
