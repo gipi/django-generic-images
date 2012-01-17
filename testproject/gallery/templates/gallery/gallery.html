@@ -1,0 +1,17 @@
+{% load generic_images_tags %}
+<html>
+	<head>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		{% generic_slideshow_js %}
+	</head>
+	<body>
+		<H1>Cats are fascinating, aren't they?</H1>
+		<div>
+		{% for cat in cats %}
+			<div>
+				<h2>{{ cat.name }}</h2>
+					{% generic_slideshow cat as "slideshow" %}
+			</div>
+		{% endfor %}
+	</body>
+</html>
