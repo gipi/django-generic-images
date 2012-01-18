@@ -26,6 +26,7 @@ setup(
                                         'locale/ru/LC_MESSAGES/*',
                                         'locale/pl/LC_MESSAGES/*',
                                         'templates/generic_images/*',
+                                        'templatetags/*',
                                         'media/generic_images/js/*'
                                       ]},
 
