@@ -72,7 +72,7 @@ class SlideshowMainNode(template.Node):
         objs =  [o for o in objs if hasattr(o, 'main')]
 
         # TODO: how indicate styles and javascript properties?
-        html_slideshow = ("<div class=\"%s\">" % self.class_name) + "".join(["<img src=\"%s\" width=\"200px\" height=\"200px\"/>" % o.main.image.url for o in objs]) + "</div>"
+        html_slideshow = ("<div class=\"%s\">" % self.class_name) + "".join(["<img src=\"%s\"/>" % o.main.image.url for o in objs]) + "</div>"
         js_slideshow = "<script>$('.%s').cycle({fx:'fade'})</script>" % self.class_name
 
 
@@ -93,7 +93,7 @@ class SlideshowNode(template.Node):
         images = AttachedImage.objects.filter(content_type__pk=obj_type.id, object_id=linked_obj.id)
 
         # TODO: how indicate styles and javascript properties?
-        html_slideshow = ("<div class=\"%s\">" % self.class_name) + "".join(["<img src=\"%s\" width=\"200px\" height=\"200px\"/>" % c.image.url for c in images]) + "</div>"
+        html_slideshow = ("<div class=\"%s\">" % self.class_name) + "".join(["<img src=\"%s\"/>" % c.image.url for c in images]) + "</div>"
         js_slideshow = "<script>$('.%s').cycle({fx:'fade'})</script>" % self.class_name
 
 
