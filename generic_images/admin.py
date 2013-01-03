@@ -6,7 +6,13 @@ from django.utils.safestring import mark_safe
 
 from generic_images.models import AttachedImage
 
-admin.site.register(AttachedImage)
+class AttachedImageAdmin(admin.ModelAdmin):
+    class Media:
+        js = (
+            'js/jquery.masonry.min.js',
+        )
+
+admin.site.register(AttachedImage, AttachedImageAdmin)
 
 class ExtendedClearableFileInput(forms.widgets.ClearableFileInput):
     """

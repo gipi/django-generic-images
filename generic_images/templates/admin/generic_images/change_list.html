@@ -1,0 +1,8 @@
+{% extends 'admin/change_list.html' %}
+{% block result_list %}
+    <ul>
+    {% for image in cl.query_set %}
+        <li><img src="{{MEDIA_URL}}/{{ image.image }}"/></li>
+    {% endfor %}
+    </ul>
+{% endblock %}
